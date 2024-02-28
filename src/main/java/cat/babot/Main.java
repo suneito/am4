@@ -28,7 +28,7 @@ public class Main {
         String inputLine;
         StringBuffer content = new StringBuffer();
         while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine+"\n");
+            content.append(inputLine);
         }
         in.close();
         return content;
