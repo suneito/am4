@@ -1,51 +1,38 @@
 package cat.babot;
 
 import cat.babot.com.Telegram;
-import org.jsoup.nodes.Document;
+import cat.babot.pasive.Consumables;
+import cat.babot.pasive.generic.Major;
+import cat.babot.com.Price;
+import cat.babot.pasive.generic.SessionVars;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Logger;
+public class Main implements Major {
+  public static void main(String[] args) {
+    SessionVars.setValue("cookie", args[0]);
+    SessionVars.setValue("bot", args[1]);
+    SessionVars.setValue("token", args[2]);
+    SessionVars.setValue("chat", args[3]);
 
-public class Main {
-    private static final java.util.logging.Logger atenea = Logger.getLogger("Main");
+    Telegram telegram = new Telegram(
+      SessionVars.getValue("bot"),
+      SessionVars.getValue("token"),
+      SessionVars.getValue("chat"));
 
-    public static void main(String[] args) throws IOException {
-        Telegram telegram = new Telegram(args[1], args[2], args[3]);
-        URL url = new URL("https://www.airlinemanager.com/fuel.php");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestProperty("cookie", args[0]);
-        con.setRequestMethod("GET");
-        atenea.info(con.getResponseCode() + " " + con.getResponseMessage());
-        Document document = org.jsoup.Jsoup.parse(getContent(con).toString());
-        String price = document.selectXpath("//div[@id='fuelMain']//span[@class='text-danger']").text();
-        atenea.info(price);
-        telegram.sendMsg(formatMsg(price));
+    Price fuelPrice = new Price(Consumables.FUEL);
+    Price co2Price = new Price(Consumables.CO2);
+    StringBuilder sbMSG = new StringBuilder();
+
+    if(fuelPrice.goodPrice()) {
+      sbMSG.append(fuelPrice);
+      sbMSG.append("\n");
+    }
+    if(co2Price.goodPrice()) {
+      sbMSG.append(co2Price);
+      sbMSG.append("\n");
     }
 
-    private static StringBuffer getContent(HttpURLConnection con) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-        in.close();
-        return content;
+    if (!sbMSG.isEmpty()) {
+    telegram.sendMsg(sbMSG.toString());
     }
-
-    private static String formatMsg(String price) {
-        StringBuffer content = new StringBuffer();
-        content.append("Last price change:\n")
-                .append(price)
-                .append("\n")
-                .append(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
-        return content.toString();
-    }
-
+  }
 }
