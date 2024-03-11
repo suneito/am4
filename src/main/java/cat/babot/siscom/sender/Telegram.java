@@ -1,4 +1,4 @@
-package cat.babot.com;
+package cat.babot.siscom.sender;
 
 import cat.babot.pasive.generic.Major;
 
