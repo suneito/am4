@@ -33,6 +33,8 @@ public class Main implements Major {
 
     if (!sbMSG.isEmpty()) {
     telegram.sendMsg(sbMSG.toString());
+    } else {
+      atenea.info("No message sended.");
     }
   }
 }
