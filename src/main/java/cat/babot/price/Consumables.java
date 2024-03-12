@@ -1,4 +1,4 @@
-package cat.babot.pasive;
+package cat.babot.price;
 
 public enum Consumables {
   FUEL("fuel.php", "//div[@id='fuelMain']//span[@class='text-danger']", 450, "⛽"),

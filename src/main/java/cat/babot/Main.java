@@ -1,9 +1,9 @@
 package cat.babot;
 
-import cat.babot.com.Telegram;
-import cat.babot.pasive.Consumables;
+import cat.babot.siscom.sender.Telegram;
+import cat.babot.price.Consumables;
 import cat.babot.pasive.generic.Major;
-import cat.babot.com.Price;
+import cat.babot.price.Price;
 import cat.babot.pasive.generic.SessionVars;
 
 public class Main implements Major {

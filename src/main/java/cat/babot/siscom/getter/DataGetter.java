@@ -1,7 +1,7 @@
-package cat.babot.com;
+package cat.babot.siscom.getter;
 
 import cat.babot.pasive.generic.Major;
-import cat.babot.pasive.Consumables;
+import cat.babot.price.Consumables;
 import cat.babot.pasive.generic.SessionVars;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

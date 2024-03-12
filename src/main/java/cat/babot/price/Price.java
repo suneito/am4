@@ -1,7 +1,7 @@
-package cat.babot.com;
+package cat.babot.price;
 
 import cat.babot.pasive.generic.Major;
-import cat.babot.pasive.Consumables;
+import cat.babot.siscom.getter.DataGetter;
 
 import java.io.IOException;
 
