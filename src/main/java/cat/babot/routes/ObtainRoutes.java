@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class ObtainRoutes implements Major {
   public static void main(String[] args) throws IOException {
-    SessionVars.setValue("cookie", "PHPSESSID=p09rr6k125uji71m2f81ruuljq");
     String departureID = "2763";
     DataGetter dg = new DataGetter();
     CSVWriter writer = new CSVWriter();
