@@ -19,7 +19,7 @@ public class Price implements Major {
   private void refreshPrice() {
     int actualPrice;
     try {
-      String price = dataGetter.obtainData(value);
+      String price = dataGetter.obtainTextValue(value);
       actualPrice = Integer.parseInt(price.replaceAll("\\D", ""));
     } catch (IOException e) {
       throw new RuntimeException(e);
