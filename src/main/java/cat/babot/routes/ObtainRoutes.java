@@ -11,11 +11,11 @@ import java.util.Map;
 
 public class ObtainRoutes implements Major {
   public static void main(String[] args) throws IOException {
-    SessionVars.setValue("cookie", args[0]);
-    String departureID = args[1];
+    SessionVars.setValue("cookie", "PHPSESSID=p09rr6k125uji71m2f81ruuljq");
+    String departureID = "2763";
     DataGetter dg = new DataGetter();
     CSVWriter writer = new CSVWriter();
-    writer.writeLine("COUNTRY,CITY,AIRPORT_ID,Y_CLASS,J_CLASS,F_CLASS,DISTANCE,BASE;");
+    writer.writeLine("COUNTRY,AIRPORT_ID,CITY,Y_CLASS,J_CLASS,F_CLASS,DISTANCE,BASE;");
     List<String> countriesList = dg.obtainMultipleValues(Services.COUNTRY);
 
     for (String country : countriesList) {
