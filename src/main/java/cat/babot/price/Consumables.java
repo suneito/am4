@@ -1,8 +1,8 @@
 package cat.babot.price;
 
 public enum Consumables {
-  FUEL("fuel.php", "//div[@id='fuelMain']//span[@class='text-danger']", 450, "⛽"),
-  CO2("co2.php", "//div[@id='co2Main']//span[@class='text-danger']", 130, "\uD83C\uDF3F");
+  FUEL("fuel.php", "//div[@id='fuelMain']//span[@class='text-danger']", 600, "⛽"),
+  CO2("co2.php", "//div[@id='co2Main']//span[@class='text-danger']", 150, "\uD83C\uDF3F");
 
   final String service;
   final String xpath;
